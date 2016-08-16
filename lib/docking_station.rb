@@ -6,8 +6,11 @@ class DockingStation
   end
 
   def dock(bike) # this method act of docking bike in station
+
   end
 
+  def bike
 
+  end
 
 end
