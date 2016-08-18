@@ -12,8 +12,7 @@ class DockingStation
   end
 
   def release_bike
-    working_bikes = @bikes.select {|bike| bike.broken == false}
-    fail "There are no bikes available" if working_bikes == [] || empty?
+    fail "There are no bikes available" if empty?
     working_bikes.shift
   end
 
@@ -25,11 +24,15 @@ class DockingStation
 private
 
   def full?
-    @bikes.length >= capacity
+    @bikes.count >= capacity
   end
 
   def empty?
-    @bikes.length == 0
+    working_bikes.count == 0
+  end
+
+  def working_bikes
+    @bikes.select {|bike| bike.broken == false}
   end
 
 end
