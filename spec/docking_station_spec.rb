@@ -40,4 +40,9 @@ describe DockingStation do
     expect(subject.bikes).to eq [bike]
   end
 
+  it 'initializes with a capacity argument' do
+    station = DockingStation.new 50
+    expect(station.capacity).to eq 50 
+  end
+
 end
