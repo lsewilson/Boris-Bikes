@@ -1,7 +1,9 @@
 class Garage
 
-  def bikes
-    @bikes
+  attr_reader :bikes
+
+  def receive(van)
+    @bikes = van.van_bikes
   end
 
 end
