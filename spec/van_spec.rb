@@ -23,4 +23,18 @@ describe Van do
 
   end
 
+  describe '#deliver' do
+
+    it 'should deliver all broken bikes in van to garage' do
+        bike = Bike.new
+        station = DockingStation.new
+        bike.report_broken
+        station.dock_bike(bike)
+        subject.collect_broken_bikes(station)
+        expect(subject.deliver).to eq [bike] 
+    end
+
+  end
+
+
 end
