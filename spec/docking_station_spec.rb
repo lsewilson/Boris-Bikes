@@ -9,26 +9,38 @@ describe DockingStation do
     it 'gets a bike from docked bikes' do
       bike = double(:bike)
       subject.dock_bike(bike)
+      allow(bike).to receive(:broken).and_return(false)
       expect(subject.release_bike).to eq bike
     end
 
     it 'releases a working bike' do
-      subject.dock_bike double(:bike)
+      bike = double(:bike)
+      subject.dock_bike(bike)
+      allow(bike).to receive(:broken).and_return(false)
+      allow(bike).to receive(:working?).and_return(true)
       expect(subject.release_bike).to be_working
     end
 
-    it 'does not release a broken bike' do
+    it 'docks two bikes, one working and one broken, and releases the working bike' do
       bike = double(:bike)
+      allow(bike).to receive(:report_broken).and_return(true)
       bike.report_broken
       subject.dock_bike(bike)
-      subject.dock_bike double(:bike)
-      expect(subject.release_bike).to be_working
+      bike2 = double(:bike)
+      subject.dock_bike(bike2)
+      allow(bike2).to receive(:working?).and_return(true)
+      allow(bike2).to receive(:broken).and_return(false)
+      allow(bike).to receive(:working?).and_return(false)
+      allow(bike).to receive(:broken).and_return(true)
+      expect(subject.release_bike).to be bike2
     end
 
     it 'raises error when only broken bikes' do
       bike = double(:bike)
+      allow(bike).to receive(:report_broken).and_return(true)
       bike.report_broken
       subject.dock_bike(bike)
+      allow(bike).to receive(:broken).and_return(true)
       expect{subject.release_bike}.to raise_error "There are no bikes available"
     end
 
@@ -55,6 +67,7 @@ describe DockingStation do
 
     it 'docks any bike even if it is broken' do
       bike = double(:bike)
+      allow(bike).to receive(:report_broken).and_return(true)
       bike.report_broken
       expect(subject.dock_bike(bike)).to eq [bike]
     end
