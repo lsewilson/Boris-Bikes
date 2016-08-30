@@ -4,11 +4,10 @@ class DockingStation
 
   def release_bike
     Bike.new
-
   end
 
   def dock(bike) # this method act of docking bike in station
-  @bike = bike
+    @bike = bike
   end
 
   def bike
