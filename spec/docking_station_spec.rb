@@ -7,10 +7,12 @@ describe DockingStation do
     expect(subject).to respond_to(:release_bike)
   end
 
-  # it "released working bikes" do
-  #   bike = subject.release_bike
-  #   expect(bike).to be_working
-  # end
+  it "released working bikes" do
+    subject.dock(Bike.new)
+    bike = subject.release_bike
+    expect(bike).to be_working
+  end
+
   describe '#dock(bike)' do
     it 'docks bike at docking station' do
       bike = Bike.new
