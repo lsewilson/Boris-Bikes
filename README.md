@@ -1,1 +1,15 @@
-A program by Andrea Wildsmith and Ewan Sheldon that will run all the Docking Stations, simulate all the Bikes, and emulate all the infrastructure of a new TfL bike system
+# Boris Bikes
+
+
+## Description
+
+A program that will run all docking stations, simulate all bikes and emulate all the infrastructure of the TfL bike hire system.
+
+## Set Up Instructions
+
+1. Clone the repo.
+
+## How to use
+
+
+## Feature Test
