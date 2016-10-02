@@ -1,5 +1,3 @@
-#accepts bikes from van
-#fixes bikes
 class Garage
 
   attr_reader :bikes
