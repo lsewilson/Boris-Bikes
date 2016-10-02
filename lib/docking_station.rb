@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class DockingStation
 
   DEFAULT_CAPACITY = 20

@@ -5,6 +5,7 @@ describe DockingStation do
   let(:bike) { double :bike, working?: true }
   let(:broken_bike) { double :bike, working?: false }
   let(:van) { double :van , dock: broken_bike}
+  
   it 'initializes with a default capacity' do
     expect(station.capacity).to equal DockingStation::DEFAULT_CAPACITY
   end
@@ -57,5 +58,4 @@ describe DockingStation do
     end
 
   end
-
 end
