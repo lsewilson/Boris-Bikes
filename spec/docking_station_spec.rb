@@ -43,11 +43,11 @@ describe DockingStation do
 
   end
 
-  # describe '#release_broken_bikes' do
-  #   it 'releases all broken bikes' do
-  #     station.dock(broken_bike)
-  #     expect(station.release_broken_bikes).to equal [broken_bike]
-  #   end
-  # end
+  describe '#release_broken_bikes' do
+    it 'releases all broken bikes' do
+      station.dock(broken_bike)
+      expect(station.release_broken_bikes).to include broken_bike
+    end
+  end
 
 end
