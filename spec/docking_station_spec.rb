@@ -4,7 +4,7 @@ describe DockingStation do
   subject(:station) { described_class.new }
   let(:bike) { double :bike, working?: true }
   let(:broken_bike) { double :bike, working?: false }
-
+  let(:van) { double :van , dock: broken_bike}
   it 'initializes with a default capacity' do
     expect(station.capacity).to equal DockingStation::DEFAULT_CAPACITY
   end
@@ -44,10 +44,18 @@ describe DockingStation do
   end
 
   describe '#release_broken_bikes' do
+    it 'docks bikes in the van' do
+      station.dock(broken_bike)
+      station.release_broken_bikes(van)
+      expect(van).to have_received(:dock)
+    end
+
     it 'releases all broken bikes' do
       station.dock(broken_bike)
-      expect(station.release_broken_bikes).to include broken_bike
+      station.release_broken_bikes(van)
+      expect(station.bikes).to be_empty
     end
+
   end
 
 end
